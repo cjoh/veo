@@ -1,0 +1,15 @@
+[project]
+name = "veo"
+version = "0.1.0"
+description = "CLI tool for generating videos with Gemini Veo models"
+requires-python = ">=3.13"
+dependencies = [
+    "google-genai>=1.63.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+veo = "veo:main"
