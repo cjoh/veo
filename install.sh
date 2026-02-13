@@ -22,10 +22,13 @@ EOF
 chmod +x "$HOME/bin/veo"
 echo "  Installed ~/bin/veo"
 
-# Install Claude Code skill
-mkdir -p "$HOME/.claude/skills/veo"
-ln -sf "$SCRIPT_DIR/skill/SKILL.md" "$HOME/.claude/skills/veo/SKILL.md"
-echo "  Installed Claude Code skill -> ~/.claude/skills/veo/"
+# Install Claude Code skills
+for skill_dir in "$SCRIPT_DIR"/skills/*/; do
+    skill_name="$(basename "$skill_dir")"
+    mkdir -p "$HOME/.claude/skills/$skill_name"
+    ln -sf "$skill_dir/SKILL.md" "$HOME/.claude/skills/$skill_name/SKILL.md"
+    echo "  Installed skill: $skill_name"
+done
 
 echo ""
 echo "Done! Make sure:"
